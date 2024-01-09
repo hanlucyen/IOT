@@ -1,7 +1,4 @@
-/*RFID tag scan code
- * https://srituhobby.com
- */
- 
+
 #include <LiquidCrystal_I2C.h>
 #include <SPI.h>
 #include <MFRC522.h>
@@ -28,6 +25,9 @@ void setup() {
 }
 
 void loop() {
+  if ( ! mfrc522.PICC_IsNewCardPresent()) {
+
+  }
 
 
   lcd.clear();
@@ -42,10 +42,11 @@ void loop() {
     lcd.setCursor(a, 1);
     lcd.print(readCard[i], HEX);
     lcd.print(" ");
-    delay(500);
+    delay(100);
     a += 3;
   }
   Serial.println("");
   mfrc522.PICC_HaltA();
+ 
   
 }
